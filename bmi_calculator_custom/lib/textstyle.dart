@@ -17,7 +17,7 @@ class TextandIconContent extends StatelessWidget {
           size: 80.0,
         ),
         SizedBox(
-          height: 15.0,
+          height: 15.1,
         ),
         Text(
           label,
