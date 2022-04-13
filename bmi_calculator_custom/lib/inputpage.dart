@@ -1,10 +1,16 @@
+import 'package:bmi_calculator_custom/constantFile.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'ContainerFile.dart';
 import 'IconTextFile.dart';
+import 'constantFile.dart';
 
-const activeColor = Color(0xFF1D1E33);
-const deActiveColor = Color(0xFF111328);
+
+
+enum Gender {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
 
@@ -13,19 +19,24 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color maleColor = deActiveColor;
-  Color femaleColor = deActiveColor;
-  void updateColor(int gender)
-  {
-    if (gender == 1) {
-      maleColor = activeColor;
-      femaleColor = deActiveColor;
-    }
-    if (gender == 2) {
-      maleColor = deActiveColor;
-      femaleColor = activeColor;
-    }
-  }
+
+  late Gender selectGender;
+  int sliderHeight=180;
+  int sliderweight=60;
+
+  // Color maleColor = deActiveColor;
+  // Color femaleColor = deActiveColor;
+  // void updateColor(Gender gendertype)
+  // {
+  //  if (gendertype == Gender.male) {
+  //    maleColor = activeColor;
+   //   femaleColor = deActiveColor;
+   // }
+  //  if (gendertype == Gender.female) {
+   //   maleColor = deActiveColor;
+    //  femaleColor = activeColor;
+   // }
+ // }
 
 
   @override
@@ -35,57 +46,108 @@ class _InputPageState extends State<InputPage> {
         title: Text('BMI Calculator by Massab'),
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(child: Row(
             children: [
               Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        updateColor(1);
-                      });
-                    },
+
                     child: RepeatContainerCode(
-                      colors: maleColor,
+                      onPressed: (){
+                        setState(() {
+                          selectGender=Gender.male;
+                        });
+                      },
+                      colors: selectGender==Gender.male?activeColor:deActiveColor,
                       cardWidget: RepeatTextandIconWidget(
                         iconData: FontAwesomeIcons.male,
                         label: 'MALE',
                       ),
                     ),
-                  ),
+
               ),
               Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      updateColor(2);
-                    });
-                  },
                   child: RepeatContainerCode(
-                  colors: femaleColor,
+                    onPressed: (){
+                      setState(() {
+                        selectGender=Gender.female;
+                      });
+                    },
+                    colors: selectGender==Gender.female?activeColor:deActiveColor,
                   cardWidget: RepeatTextandIconWidget(
                     iconData: FontAwesomeIcons.female,
                     label: 'FEMALE',
                   ),
 
               ),
-                ),
+
               ),
             ],
           ),
           ),
           Expanded(child: RepeatContainerCode(
+            onPressed: (){},
             colors: Color(0xFF1DE33),
+            cardWidget: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Height', style: kLabelStyle,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      sliderHeight.toString(),
+                      style: kNumberStyle,
+                    ),
+                    Text(
+                      'cm',
+                      style: kLabelStyle,
+                    ),
+
+                  ],
+                ),
+                Slider(
+                  value: sliderHeight.toDouble(),
+                  min: 120.0,
+                  max: 220.0,
+                  activeColor: Color(0xFFEB1555),
+                  inactiveColor: Color(0xFF8D8E98),
+                  onChanged: (double newValue) {
+                    setState(() {
+                      sliderHeight = newValue.round();
+
+                    });
+                  },
+                ),
+              ],
+            ),
           ),
           ),
           Expanded(child: Row(
             children: [
               Expanded(child: RepeatContainerCode(
+                onPressed: (){},
                 colors: Color(0xFF1DE33),
+                cardWidget: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                        'Weight',
+                        style: kLabelStyle,
+                    ),
+                    Text(
+                      sliderHeight.toString(),
+                      style: kNumberStyle,
+
+                    ),
+                  ],
+                ),
               ),
               ),
               Expanded(child: RepeatContainerCode(
+                onPressed: (){},
                 colors: Color(0xFF1DE33),
+                cardWidget: ,
               ),
               ),
             ],
