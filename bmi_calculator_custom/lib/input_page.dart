@@ -1,12 +1,12 @@
 import 'drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'icon_content.dart';
-import 'reusable_card.dart';
-import 'constants.dart';
-import 'results_page.dart';
-import 'bottom_button.dart';
-import 'round_icon_button.dart';
+import 'textstyle.dart';
+import 'containerFile.dart';
+import 'constantsFile.dart';
+import 'result.dart';
+import 'calbutton.dart';
+import 'roundIcon.dart';
 import 'calculator_brain.dart';
 
 enum Gender {
@@ -40,32 +40,32 @@ class _InputPageState extends State<InputPage> {
               child: Row(
             children: <Widget>[
               Expanded(
-                child: ReusableCard(
+                child: Containerforreuse(
                   onPress: () {
                     setState(() {
                       selectedGender = Gender.male;
                     });
                   },
                   colour: selectedGender == Gender.male
-                      ? kActiveCardColour
-                      : kInactiveCardColour,
-                  cardChild: IconContent(
+                      ? kActiveColour
+                      : kInactiveColour,
+                  cardChild: TextandIconContent(
                     icon: FontAwesomeIcons.mars,
                     label: 'MALE',
                   ),
                 ),
               ),
               Expanded(
-                child: ReusableCard(
+                child: Containerforreuse(
                   onPress: () {
                     setState(() {
                       selectedGender = Gender.female;
                     });
                   },
                   colour: selectedGender == Gender.female
-                      ? kActiveCardColour
-                      : kInactiveCardColour,
-                  cardChild: IconContent(
+                      ? kActiveColour
+                      : kInactiveColour,
+                  cardChild: TextandIconContent(
                     icon: FontAwesomeIcons.venus,
                     label: 'FEMALE',
                   ),
@@ -74,8 +74,8 @@ class _InputPageState extends State<InputPage> {
             ],
           )),
           Expanded(
-            child: ReusableCard(
-              colour: kActiveCardColour,
+            child: Containerforreuse(
+              colour: kActiveColour,
               cardChild: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -128,8 +128,8 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: ReusableCard(
-                    colour: kActiveCardColour,
+                  child: Containerforreuse(
+                    colour: kActiveColour,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -144,7 +144,7 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            RoundIconButton(
+                            RoundIcon(
                                 icon: FontAwesomeIcons.minus,
                                 onPressed: () {
                                   setState(() {
@@ -154,7 +154,7 @@ class _InputPageState extends State<InputPage> {
                             SizedBox(
                               width: 10.0,
                             ),
-                            RoundIconButton(
+                            RoundIcon(
                               icon: FontAwesomeIcons.plus,
                               onPressed: () {
                                 setState(() {
@@ -169,8 +169,8 @@ class _InputPageState extends State<InputPage> {
                   ),
                 ),
                 Expanded(
-                  child: ReusableCard(
-                    colour: kActiveCardColour,
+                  child: Containerforreuse(
+                    colour: kActiveColour,
                     cardChild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -185,7 +185,7 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            RoundIconButton(
+                            RoundIcon(
                               icon: FontAwesomeIcons.minus,
                               onPressed: () {
                                 setState(
@@ -198,7 +198,7 @@ class _InputPageState extends State<InputPage> {
                             SizedBox(
                               width: 10.0,
                             ),
-                            RoundIconButton(
+                            RoundIcon(
                                 icon: FontAwesomeIcons.plus,
                                 onPressed: () {
                                   setState(() {
@@ -214,7 +214,7 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          BottomButton(
+          Calbutton(
             buttonTitle: 'CALCULATE',
             onTap: () {
               CalculatorBrain calc =
@@ -223,7 +223,7 @@ class _InputPageState extends State<InputPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(
+                  builder: (context) => resultview(
                         bmiResult: calc.calculateBMI(),
                         resultText: calc.getResult(),
                         interpretation: calc.getInterpretation(),
