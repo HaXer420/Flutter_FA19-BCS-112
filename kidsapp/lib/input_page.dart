@@ -21,9 +21,12 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
-  int height = 180;
-  int weight = 60;
-  int age = 20;
+  int height = 30;
+  int weight = 10;
+  int age = 10;
+
+  int min1=20;
+  int max1=80;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +34,7 @@ class _InputPageState extends State<InputPage> {
       drawer: MyDrawer(),
       appBar: AppBar(
         centerTitle: true,
-        title: Text('BMI CALCULATOR BY MASSAB'),
+        title: Text('KIDS CALCULATOR BY MASSAB'),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -44,14 +47,17 @@ class _InputPageState extends State<InputPage> {
                   onPress: () {
                     setState(() {
                       selectedGender = Gender.male;
+                      height=0;
+                      min1=0;
+                      max1=50;
                     });
                   },
                   colour: selectedGender == Gender.male
                       ? kActiveColour
                       : kInactiveColour,
                   cardChild: TextandIconContent(
-                    icon: FontAwesomeIcons.male,
-                    label: 'MALE',
+                    icon: FontAwesomeIcons.playCircle,
+                    label: 'Select 1 to 50',
                   ),
                 ),
               ),
@@ -60,14 +66,17 @@ class _InputPageState extends State<InputPage> {
                   onPress: () {
                     setState(() {
                       selectedGender = Gender.female;
+                      height=0;
+                      min1=0;
+                      max1=100;
                     });
                   },
                   colour: selectedGender == Gender.female
                       ? kActiveColour
                       : kInactiveColour,
                   cardChild: TextandIconContent(
-                    icon: FontAwesomeIcons.female,
-                    label: 'FEMALE',
+                    icon: FontAwesomeIcons.playCircle,
+                    label: 'Select 1 to 100',
                   ),
                 ),
               ),
@@ -111,8 +120,8 @@ class _InputPageState extends State<InputPage> {
                     ),
                     child: Slider(
                       value: height.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
+                      min: min1.toDouble(),
+                      max: max1.toDouble(),
                       onChanged: (double newValue) {
                         setState(() {
                           height = newValue.round();
@@ -134,7 +143,7 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'WEIGHT',
+                          'ADD',
                           style: kLabelTextStyle,
                         ),
                         Text(
@@ -175,7 +184,7 @@ class _InputPageState extends State<InputPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          'AGE',
+                          'POWER',
                           style: kLabelTextStyle,
                         ),
                         Text(
@@ -218,7 +227,7 @@ class _InputPageState extends State<InputPage> {
             buttonTitle: 'CALCULATE',
             onTap: () {
               CalculatorBrain calc =
-                  CalculatorBrain(height: height, weight: weight);
+                  CalculatorBrain(height: height, weight: weight, age: age);
 
               Navigator.push(
                 context,

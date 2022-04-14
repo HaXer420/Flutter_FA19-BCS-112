@@ -25,6 +25,9 @@ class _InputPageState extends State<InputPage> {
   int weight = 60;
   int age = 20;
 
+  int min1 = 15;
+  int max2 = 150;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,8 +53,8 @@ class _InputPageState extends State<InputPage> {
                       ? kActiveColour
                       : kInactiveColour,
                   cardChild: TextandIconContent(
-                    icon: FontAwesomeIcons.male,
-                    label: 'MALE',
+                    icon: FontAwesomeIcons.playCircle,
+                    label: 'Select 1 to 50',
                   ),
                 ),
               ),
@@ -66,8 +69,8 @@ class _InputPageState extends State<InputPage> {
                       ? kActiveColour
                       : kInactiveColour,
                   cardChild: TextandIconContent(
-                    icon: FontAwesomeIcons.female,
-                    label: 'FEMALE',
+                    icon: FontAwesomeIcons.playCircle,
+                    label: 'Select 1 to 100',
                   ),
                 ),
               ),
@@ -111,8 +114,8 @@ class _InputPageState extends State<InputPage> {
                     ),
                     child: Slider(
                       value: height.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
+                      min: 20.0,
+                      max: 50.0,
                       onChanged: (double newValue) {
                         setState(() {
                           height = newValue.round();
