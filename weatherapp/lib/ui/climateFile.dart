@@ -52,7 +52,7 @@ class _ClimateState extends State<Climate> {
 TextStyle cityStyle() {
   return TextStyle(
     color: Colors.white,
-    fontSize: 22.9,
+    fontSize: 22.8,
     fontStyle: FontStyle.italic
   );
 }
