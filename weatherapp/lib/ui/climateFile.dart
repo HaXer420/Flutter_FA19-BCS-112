@@ -15,6 +15,22 @@ class _ClimateState extends State<Climate> {
     print(data.toString());
   }
 
+  late String _cityEntered;
+  Future _goToNextScreen(BuildContext context) async {
+    Map? results = await Navigator.of(context)
+        .push(new MaterialPageRoute<Map>(builder: (BuildContext context) {
+          //change to Map instead of dynamic for this to work
+      return new ChangeCity();
+    }));
+
+    if (results != null && results.containsKey('enter')) {
+      _cityEntered = results['enter'];
+
+//      debugPrint("From First screen" + results['enter'].toString());
+
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +41,9 @@ class _ClimateState extends State<Climate> {
         actions: [
           IconButton(
             icon: Icon(Icons.menu),
-            onPressed: () => showStuff(),
+            onPressed: () {
+              _goToNextScreen(context);
+            },
           ),
         ],
 
@@ -111,6 +129,56 @@ class _ClimateState extends State<Climate> {
         });
   }
 
+}
+
+
+class ChangeCity extends StatelessWidget {
+  var _cityFieldController = TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.red,
+        title: Text('Change City'),
+        centerTitle: true,
+      ),
+      body: Stack(
+        children: <Widget>[
+          Center(
+            child: Image.asset(
+              'images/white_snow.png',
+              width: 590.0,
+              height: 1200.0,
+              fit: BoxFit.fill,
+            ),
+          ),
+          ListView(
+            children: <Widget>[
+              ListTile(
+                title: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Enter City',
+                  ),
+                  controller: _cityFieldController,
+                  keyboardType: TextInputType.text,
+                ),
+              ),
+              ListTile(
+                title: FlatButton(
+                    onPressed: () {
+                      Navigator.pop(
+                          context, {'enter': _cityFieldController.text});
+                    },
+                    textColor: Colors.white70,
+                    color: Colors.redAccent,
+                    child: Text('Get Weather')),
+              )
+            ],
+          )
+        ],
+      ),
+    );
+  }
 }
 
 
