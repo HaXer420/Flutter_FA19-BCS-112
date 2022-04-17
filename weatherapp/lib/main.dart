@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/Screen00.dart';
-import 'package:weatherapp/Screen02.dart';
-import 'package:weatherapp/screen01.dart';
+import 'ui/climateFile.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Screen1(),
-    );
-  }
+  runApp(new MaterialApp(
+    title: 'Climat',
+    home: Climate(),
+  ),
+  );
 }
