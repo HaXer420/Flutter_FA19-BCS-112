@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weatherapp/utils/apifile.dart' as util;
 
 class Climate extends StatefulWidget {
   const Climate({Key? key}) : super(key: key);
@@ -43,6 +44,12 @@ class _ClimateState extends State<Climate> {
         ],
       ),
     );
+  }
+
+  Future <Map> getWeather(String appId, String city)async{
+    String apiUrl='https://api.openweathermap.org/data/2.5/weather?q=$city&appid='
+    '${util.apiId}&units=imperial';
+    //https://api.openweathermap.org/data/2.5/weather?q=vehari&appid=cd444af68b389fa65c3371d707a024a1&units=metric
   }
 }
 
