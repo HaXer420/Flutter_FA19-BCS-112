@@ -4,7 +4,7 @@ import 'ui/climateFile.dart';
 void main() {
   runApp(new MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'Climat',
+    title: 'Climate',
     home: Climate(),
   ),
   );

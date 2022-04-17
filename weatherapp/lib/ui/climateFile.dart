@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:weatherapp/utils/apifile.dart' as util;
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Climate extends StatefulWidget {
-  const Climate({Key? key}) : super(key: key);
 
   @override
   State<Climate> createState() => _ClimateState();
 }
 
 class _ClimateState extends State<Climate> {
+  void showStuff() async {
+    Map data = await getWeather(util.apiId, util.defaultCity);
+    print(data.toString());
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +25,7 @@ class _ClimateState extends State<Climate> {
         actions: [
           IconButton(
             icon: Icon(Icons.menu),
-            onPressed: () {},
+            onPressed: () => showStuff(),
           ),
         ],
 
@@ -50,6 +57,10 @@ class _ClimateState extends State<Climate> {
     String apiUrl='https://api.openweathermap.org/data/2.5/weather?q=$city&appid='
     '${util.apiId}&units=imperial';
     //https://api.openweathermap.org/data/2.5/weather?q=vehari&appid=cd444af68b389fa65c3371d707a024a1&units=metric
+
+    http.Response response = await http.get(Uri.parse(apiUrl));
+
+    return json.decode(response.body);
   }
 }
 
