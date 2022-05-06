@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'strong_password_generator.dart';
+import 'simple_password_generator.dart';
 import 'package:midlabtaskpocketpassworddairy/homepage.dart';
 
-class strongpass extends StatefulWidget {
+class simplepass extends StatefulWidget {
   @override
-  _strongpassState createState() => _strongpassState();
+  _simplepassState createState() => _simplepassState();
 }
 
-class _strongpassState extends State<strongpass> {
+class _simplepassState extends State<simplepass> {
   bool _isWithLetters = true;
   bool _isWithUppercase = false;
   bool _isWithNumbers = false;
-  bool _isWithSpecial = false;
   double _numberCharPassword = 8;
   String newPassword = '';
   Color _color = Colors.blue;
@@ -44,7 +43,7 @@ class _strongpassState extends State<strongpass> {
       home: Scaffold(
         backgroundColor: Colors.amber,
         appBar: AppBar(
-          title: const Text('Strong Password By Massab'),
+          title: const Text('Simple Password By Massab'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -81,10 +80,6 @@ class _strongpassState extends State<strongpass> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                checkBox('Special Symbols/Characters', (bool value) {
-                  _isWithSpecial = value;
-                  setState(() {});
-                }, _isWithSpecial),
                 checkBox('Numbers', (bool value) {
                   _isWithNumbers = value;
                   setState(() {});
@@ -111,26 +106,26 @@ class _strongpassState extends State<strongpass> {
                 keyboardType: TextInputType.number,
               ),
             ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TextField(
-                controller: _passwordLength,
-                decoration: InputDecoration(
-                  border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
-                    borderSide: new BorderSide(),
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[300],
-                  labelText: 'Enter Length',
-                  labelStyle: TextStyle(color: Colors.purple),
-                ),
-                keyboardType: TextInputType.number,
-              ),
-            ),
+            // SizedBox(
+            //   height: 20,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.all(15.0),
+            //   child: TextField(
+            //     controller: _passwordLength,
+            //     decoration: InputDecoration(
+            //       border: new OutlineInputBorder(
+            //         borderRadius: new BorderRadius.circular(25.0),
+            //         borderSide: new BorderSide(),
+            //       ),
+            //       filled: true,
+            //       fillColor: Colors.grey[300],
+            //       labelText: 'Enter Length',
+            //       labelStyle: TextStyle(color: Colors.purple),
+            //     ),
+            //     keyboardType: TextInputType.number,
+            //   ),
+            // ),
             SizedBox(
               height: 20,
             ),
@@ -144,7 +139,6 @@ class _strongpassState extends State<strongpass> {
                       letters: _isWithLetters,
                       numbers: _isWithNumbers,
                       passwordLength: _numberCharPassword,
-                      specialChar: _isWithSpecial,
 
                       uppercase: _isWithUppercase);
 

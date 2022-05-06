@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 import 'drawer.dart';
 import 'dart:async';
 import 'bgimage.dart';
 import 'strongpassword/strong.dart';
+import 'simplepassword/simple.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -31,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image(image: AssetImage('asset/daddy.jpg'), height: 300),
+            Image(image: AssetImage('asset/img.png'), height: 300),
             Text("FA19-BCS-112", style: TextStyle(fontSize: 20)),
             SizedBox(
               height: 10,
@@ -103,10 +103,10 @@ class _LandingPageState extends State<LandingPage> {
                                 ),
                                 onPressed: () {
 
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //       builder: (context) => contactus(),));
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => simplepass(),));
                                 },
 
 

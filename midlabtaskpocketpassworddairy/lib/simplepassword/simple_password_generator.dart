@@ -10,7 +10,8 @@ class RandomPasswordGenerator {
       bool uppercase = false,
       bool numbers = false,
       bool specialChar = false,
-      double passwordLength = 8}) {
+      passwordHint,
+      double passwordLength = 4}) {
     if (letters == false &&
         uppercase == false &&
         specialChar == false &&
@@ -30,7 +31,7 @@ class RandomPasswordGenerator {
     int i = 0;
     String _result = "";
     while (i < passwordLength.round()) {
-      int randomInt = Random.secure().nextInt(_allowedChars.length);
+      int randomInt = Random.secure().nextInt(_lowerCaseLetters.length);
       _result += _allowedChars[randomInt];
       i++;
     }
