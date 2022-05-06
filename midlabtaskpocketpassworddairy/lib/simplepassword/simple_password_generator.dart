@@ -11,7 +11,7 @@ class RandomPasswordGenerator {
       bool numbers = false,
       bool specialChar = false,
       passwordHint,
-      double passwordLength = 4}) {
+      double passwordLength = 8}) {
     if (letters == false &&
         uppercase == false &&
         specialChar == false &&
