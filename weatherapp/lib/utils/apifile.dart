@@ -1,3 +1,2 @@
-final apiId = "cd444af68b389fa65c3371d707a024a1";
+final apiId = "24a6f87e8290e9b3595761c99068f507";
 final defaultCity = "Vehari";
-

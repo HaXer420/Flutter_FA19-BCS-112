@@ -15,7 +15,7 @@ class _ClimateState extends State<Climate> {
     print(data.toString());
   }
 
-  late String _cityEntered;
+  String _cityEntered='Lahore';
   Future _goToNextScreen(BuildContext context) async {
     Map? results = await Navigator.of(context)
         .push(new MaterialPageRoute<Map>(builder: (BuildContext context) {
@@ -36,11 +36,11 @@ class _ClimateState extends State<Climate> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Weather APP'),
-        backgroundColor: Colors.red,
+        title: Text('Weather by Massab'),
+        backgroundColor: Colors.black,
         actions: [
           IconButton(
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.ads_click_sharp),
             onPressed: () {
               _goToNextScreen(context);
             },
@@ -62,7 +62,7 @@ class _ClimateState extends State<Climate> {
             alignment: Alignment.topRight,
             margin: EdgeInsets.fromLTRB(0.0, 10.9, 20.9, 0.0),
             child: Text(
-              'Vehari',
+              '${_cityEntered == null ? util.defaultCity : _cityEntered}',
               style: cityStyle(),
             ),
           ),
@@ -73,7 +73,8 @@ class _ClimateState extends State<Climate> {
           ),
           Container(
             margin: EdgeInsets.fromLTRB(0.0, 10.9, 20.9, 0.0),
-            child: updateTempWidget('Lahore'),
+            child: updateTempWidget(
+                '${_cityEntered == null ? util.defaultCity : _cityEntered}'),
             ),
         ],
       ),
@@ -109,7 +110,7 @@ class _ClimateState extends State<Climate> {
                           fontStyle: FontStyle.normal,
                           fontSize: 49.9,
                           color: Colors.white,
-                          fontWeight: FontWeight.w500),
+                          fontWeight: FontWeight.w800),
                     ),
                     subtitle: new ListTile(
                       title: new Text(
@@ -132,13 +133,19 @@ class _ClimateState extends State<Climate> {
 }
 
 
-class ChangeCity extends StatelessWidget {
+class ChangeCity extends StatefulWidget {
+  @override
+  State<ChangeCity> createState() => _ChangeCityState();
+}
+
+class _ChangeCityState extends State<ChangeCity> {
   var _cityFieldController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: Colors.black,
         title: Text('Change City'),
         centerTitle: true,
       ),
@@ -164,13 +171,13 @@ class ChangeCity extends StatelessWidget {
                 ),
               ),
               ListTile(
-                title: FlatButton(
+                title: MaterialButton(
                     onPressed: () {
                       Navigator.pop(
                           context, {'enter': _cityFieldController.text});
                     },
                     textColor: Colors.white70,
-                    color: Colors.redAccent,
+                    color: Colors.black26,
                     child: Text('Get Weather')),
               )
             ],
@@ -202,5 +209,5 @@ TextStyle tempStyle() {
 
 TextStyle extraData() {
   return TextStyle(
-      color: Colors.white70, fontStyle: FontStyle.normal, fontSize: 17.0);
+      color: Colors.white70, fontStyle: FontStyle.normal, fontSize: 20.0, fontWeight: FontWeight.w400);
 }
