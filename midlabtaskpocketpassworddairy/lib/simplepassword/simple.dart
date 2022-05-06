@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'simple_password_generator.dart';
 import 'package:midlabtaskpocketpassworddairy/homepage.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class simplepass extends StatefulWidget {
   @override
@@ -45,7 +47,7 @@ class _simplepassState extends State<simplepass> {
       home: Scaffold(
         backgroundColor: Colors.amber,
         appBar: AppBar(
-          title: const Text('Strong Password By Massab'),
+          title: const Text('Simple Password By Massab'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -83,7 +85,7 @@ class _simplepassState extends State<simplepass> {
                       labelText: 'Enter Hint',
                       labelStyle: TextStyle(color: Colors.purple),
                     ),
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.text,
                   ),
                 ),
 
@@ -117,6 +119,8 @@ class _simplepassState extends State<simplepass> {
                       //   _color = Colors.green;
                       //   isOk = 'This passsword is Strong';
                       // }
+                      DatabaseReference test = FirebaseDatabase.instance.ref().child("TestingAPP");
+                      test.set("I'm testing with ID ${newPassword}");
 
                       setState(() {});
                     },

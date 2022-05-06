@@ -134,53 +134,6 @@ class _LandingPageState extends State<LandingPage> {
                     children: [
                       Form(child: Row(
                         children: [
-
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                height: 50,
-                                width: 150,
-                                child: FlatButton(
-                                  color: Colors.purple,
-                                  textColor: Colors.white,
-                                  child: new Text(
-                                    "Strong Password",
-                                    style: TextStyle(fontSize: 25),
-                                  ),
-                                  onPressed: () {
-
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => strongpass(),));
-                                  },
-
-
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-
-                      ),
-
-
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(156.0),
-              child: SingleChildScrollView(
-                child: Card(
-                  child: Column(
-                    children: [
-                      Form(child: Row(
-                        children: [
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
@@ -215,6 +168,55 @@ class _LandingPageState extends State<LandingPage> {
 
 
                     ],
+                  ),
+                ),
+              ),
+            ),
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SingleChildScrollView(
+                  child: Card(
+                    child: Column(
+                      children: [
+                        Form(child: Row(
+                          children: [
+
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Container(
+                                  height: 50,
+                                  width: 150,
+                                  child: FlatButton(
+                                    color: Colors.purple,
+                                    textColor: Colors.white,
+                                    child: new Text(
+                                      "Strong Password",
+                                      style: TextStyle(fontSize: 25),
+                                    ),
+                                    onPressed: () {
+
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => strongpass(),));
+                                    },
+
+
+                                  ),
+                                ),
+                              ),
+                            ),
+
+                          ],
+                        ),
+
+                        ),
+
+
+                      ],
+                    ),
                   ),
                 ),
               ),

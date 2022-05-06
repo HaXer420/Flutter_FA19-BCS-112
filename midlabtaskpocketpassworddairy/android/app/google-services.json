@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "853717002793",
+    "firebase_url": "https://passwordgenerator-dc491-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "passwordgenerator-dc491",
     "storage_bucket": "passwordgenerator-dc491.appspot.com"
   },
