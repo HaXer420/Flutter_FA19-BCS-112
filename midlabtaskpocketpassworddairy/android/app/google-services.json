@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "853717002793",
+    "project_id": "passwordgenerator-dc491",
+    "storage_bucket": "passwordgenerator-dc491.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853717002793:android:74a04afaebcaac92d70a38",
+        "android_client_info": {
+          "package_name": "com.example.midlabtaskpocketpassworddairy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853717002793-jel8vi4cv8f5nd3t8v2pta5h7kbbj6ul.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnKiJU_QlDNQYEmvhc8UcTTSdWsBblUwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853717002793-jel8vi4cv8f5nd3t8v2pta5h7kbbj6ul.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

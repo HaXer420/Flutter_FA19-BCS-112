@@ -1,4 +1,5 @@
 import 'dart:math';
+
 class RandomPasswordGenerator {
   String randomPassword(
       {bool letters = true,
