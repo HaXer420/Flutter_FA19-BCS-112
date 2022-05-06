@@ -3,6 +3,7 @@ import 'main.dart';
 import 'drawer.dart';
 import 'dart:async';
 import 'bgimage.dart';
+import 'strongpassword/strong.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -16,9 +17,9 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 1),
+        Duration(seconds: 0),
             () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => LoginPage())));
+            context, MaterialPageRoute(builder: (context) => LandingPage())));
   }
 
 
@@ -43,16 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-class LoginPage extends StatefulWidget {
+class LandingPage extends StatefulWidget {
 
 
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<LandingPage> createState() => _LandingPageState();
 }
 
 
-class _LoginPageState extends State<LoginPage> {
+class _LandingPageState extends State<LandingPage> {
 
 
   @override
@@ -68,7 +69,7 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => LoginPage(),));
+                  builder: (context) => LandingPage(),));
           },
           child: Icon(Icons.home),
         ),
@@ -86,32 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Form(child: Row(
                         children: [
-                      //   Expanded(
-                      //     child: Padding(
-                      //       padding: const EdgeInsets.all(50.0),
-                      //       child: Container(
-                      //       height: 50,
-                      //       width: 150,
-                      //       child: FlatButton(
-                      //         color: Colors.purple,
-                      //         textColor: Colors.white,
-                      //         child: new Text(
-                      //           "Simple Password",
-                      //           style: TextStyle(fontSize: 25),
-                      //         ),
-                      //         onPressed: () {
-                      //
-                      //           // Navigator.push(
-                      //           //     context,
-                      //           //     MaterialPageRoute(
-                      //           //       builder: (context) => QuizApp(),));
-                      //         },
-                      //
-                      //
-                      // ),
-                      //         ),
-                      //     ),
-                      //   ),
+
                           Expanded(
                              child: Padding(
                             padding: const EdgeInsets.all(10.0),
@@ -122,7 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Colors.purple,
                                 textColor: Colors.white,
                                 child: new Text(
-                                  "Strong Password",
+                                  "Simple Password",
                                   style: TextStyle(fontSize: 25),
                                 ),
                                 onPressed: () {
@@ -158,32 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       Form(child: Row(
                         children: [
-                          //   Expanded(
-                          //     child: Padding(
-                          //       padding: const EdgeInsets.all(50.0),
-                          //       child: Container(
-                          //       height: 50,
-                          //       width: 150,
-                          //       child: FlatButton(
-                          //         color: Colors.purple,
-                          //         textColor: Colors.white,
-                          //         child: new Text(
-                          //           "Simple Password",
-                          //           style: TextStyle(fontSize: 25),
-                          //         ),
-                          //         onPressed: () {
-                          //
-                          //           // Navigator.push(
-                          //           //     context,
-                          //           //     MaterialPageRoute(
-                          //           //       builder: (context) => QuizApp(),));
-                          //         },
-                          //
-                          //
-                          // ),
-                          //         ),
-                          //     ),
-                          //   ),
+
                           Expanded(
                             child: Padding(
                               padding: const EdgeInsets.all(10.0),
@@ -199,10 +150,10 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   onPressed: () {
 
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //       builder: (context) => contactus(),));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => strongpass(),));
                                   },
 
 
