@@ -14,6 +14,7 @@ class _strongpassState extends State<strongpass> {
   bool _isWithSpecial = false;
   double _numberCharPassword = 8;
   String newPassword = '';
+  String passwordHint = '';
   Color _color = Colors.blue;
   String isOk = '';
   TextEditingController _passwordHint = TextEditingController();

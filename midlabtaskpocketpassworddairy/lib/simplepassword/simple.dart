@@ -9,10 +9,12 @@ class simplepass extends StatefulWidget {
 
 class _simplepassState extends State<simplepass> {
   bool _isWithLetters = true;
-  bool _isWithUppercase = false;
-  bool _isWithNumbers = false;
+  bool _isWithUppercase = true;
+  bool _isWithNumbers = true;
+  bool _isWithSpecial = false;
   double _numberCharPassword = 8;
   String newPassword = '';
+  String passwordHint = '';
   Color _color = Colors.blue;
   String isOk = '';
   TextEditingController _passwordHint = TextEditingController();
@@ -27,7 +29,7 @@ class _simplepassState extends State<simplepass> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text(name), 
+        Text(name),
         Checkbox(value: value, onChanged: onTap),
       ],
     );
@@ -43,7 +45,7 @@ class _simplepassState extends State<simplepass> {
       home: Scaffold(
         backgroundColor: Colors.amber,
         appBar: AppBar(
-          title: const Text('Simple Password By Massab'),
+          title: const Text('Strong Password By Massab'),
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -57,145 +59,105 @@ class _simplepassState extends State<simplepass> {
         ),
         body: Center(
             child: Column(
-          children: [
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                checkBox('Upper Case Character', (bool value) {
-                  _isWithUppercase = value;
-                  setState(() {});
-                }, _isWithUppercase),
-                checkBox('Lower Case Character', (bool value) {
-                  _isWithLetters = value;
-                  setState(() {});
-                }, _isWithLetters)
-              ],
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                checkBox('Numbers', (bool value) {
-                  _isWithNumbers = value;
-                  setState(() {});
-                }, _isWithNumbers)
-              ],
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TextField(
-                controller: _passwordHint,
-                decoration: InputDecoration(
-                  border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
-                    borderSide: new BorderSide(),
-                  ),
-                  filled: true,
-                  fillColor: Colors.grey[300],
-                  labelText: 'Enter Hint',
-                  labelStyle: TextStyle(color: Colors.purple),
+                SizedBox(
+                  height: 10,
                 ),
-                keyboardType: TextInputType.number,
-              ),
-            ),
-            // SizedBox(
-            //   height: 20,
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.all(15.0),
-            //   child: TextField(
-            //     controller: _passwordLength,
-            //     decoration: InputDecoration(
-            //       border: new OutlineInputBorder(
-            //         borderRadius: new BorderRadius.circular(25.0),
-            //         borderSide: new BorderSide(),
-            //       ),
-            //       filled: true,
-            //       fillColor: Colors.grey[300],
-            //       labelText: 'Enter Length',
-            //       labelStyle: TextStyle(color: Colors.purple),
-            //     ),
-            //     keyboardType: TextInputType.number,
-            //   ),
-            // ),
-            SizedBox(
-              height: 20,
-            ),
-            FlatButton(
-                onPressed: () {
-                  if (_passwordLength.text.trim().isNotEmpty)
-                    _numberCharPassword =
-                        double.parse(_passwordLength.text.trim());
-
-                  newPassword = password.randomPassword(
-                      letters: _isWithLetters,
-                      numbers: _isWithNumbers,
-                      passwordLength: _numberCharPassword,
-
-                      uppercase: _isWithUppercase);
-
-                  print(newPassword);
-                  // double passwordstrength =
-                  //     password.checkPassword(password: newPassword);
-                  // if (passwordstrength < 0.3) {
-                     _color = Colors.red;
-                    isOk = 'Password:';
-                  // } else if (passwordstrength < 0.7) {
-                  //   _color = Colors.blue;
-                  //   isOk = 'This password is Good';
-                  // } else {
-                  //   _color = Colors.green;
-                  //   isOk = 'This passsword is Strong';
-                  // }
-
-                  setState(() {});
-                },
-                child: Container(
-                  color: Colors.purple,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Create Password',
-                      style: TextStyle(color: Colors.white, fontSize: 20),
+                SizedBox(
+                  height: 10,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: TextField(
+                    controller: _passwordHint,
+                    decoration: InputDecoration(
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(25.0),
+                        borderSide: new BorderSide(),
+                      ),
+                      filled: true,
+                      fillColor: Colors.grey[300],
+                      labelText: 'Enter Hint',
+                      labelStyle: TextStyle(color: Colors.purple),
                     ),
-                  ),
-                )
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            if (newPassword.isNotEmpty && newPassword != null)
-              Center(
-                  child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    isOk,
-                    style: TextStyle(color: _color, fontSize: 25),
+                    keyboardType: TextInputType.number,
                   ),
                 ),
-              )),
-            if (newPassword.isNotEmpty && newPassword != null)
-              Center(
-                  child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    newPassword,
-                    style: TextStyle(color: _color, fontSize: 25),
-                  ),
+
+                SizedBox(
+                  height: 20,
                 ),
-              ))
-          ],
-        )),
+                FlatButton(
+                    onPressed: () {
+                      if (_passwordLength.text.trim().isNotEmpty)
+                        _numberCharPassword =
+                            double.parse(_passwordLength.text.trim());
+
+                      newPassword = password.randomPassword(
+                          letters: _isWithLetters,
+                          numbers: _isWithNumbers,
+                          passwordLength: _numberCharPassword,
+                          specialChar: _isWithSpecial,
+
+                          uppercase: _isWithUppercase);
+
+                      print(newPassword);
+                      // double passwordstrength =
+                      //     password.checkPassword(password: newPassword);
+                      // if (passwordstrength < 0.3) {
+                      _color = Colors.red;
+                      isOk = 'Password:';
+                      // } else if (passwordstrength < 0.7) {
+                      //   _color = Colors.blue;
+                      //   isOk = 'This password is Good';
+                      // } else {
+                      //   _color = Colors.green;
+                      //   isOk = 'This passsword is Strong';
+                      // }
+
+                      setState(() {});
+                    },
+                    child: Container(
+                      color: Colors.purple,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Create Password',
+                          style: TextStyle(color: Colors.white, fontSize: 20),
+                        ),
+                      ),
+                    )
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                if (newPassword.isNotEmpty && newPassword != null)
+                  Center(
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            isOk,
+                            style: TextStyle(color: _color, fontSize: 25),
+                          ),
+                        ),
+                      )),
+                if (newPassword.isNotEmpty && newPassword != null)
+                  Center(
+                      child: SingleChildScrollView(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            newPassword,
+                            style: TextStyle(color: _color, fontSize: 25),
+                          ),
+                        ),
+                      ))
+              ],
+            )),
       ),
     );
   }

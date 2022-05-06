@@ -1,10 +1,5 @@
-library random_password_generator;
-
 import 'dart:math';
-
-/// [Random Password Generator]
 class RandomPasswordGenerator {
-  /// get random password [randomPassword]
   String randomPassword(
       {bool letters = true,
       bool uppercase = false,
@@ -39,10 +34,7 @@ class RandomPasswordGenerator {
     /// return random password
     return _result;
   }
-
-  /// check password strong and retrun double value [0-1] input string [password]
   double checkPassword({String password}) {
-    /// if [password] is empty return 0.0
     if (password.isEmpty) return 0.0;
 
     double bonus;
@@ -60,17 +52,14 @@ class RandomPasswordGenerator {
       bonus = 1.8;
     }
 
-    /// return double value [0-1]
     final logistic = (double x) {
       return 1.0 / (1.0 + exp(-x));
     };
 
-    /// return double value [0-1]
     final curve = (double x) {
       return logistic((x / 3.0) - 4.0);
     };
 
-    /// return double value [0-1]
     return curve(password.length * bonus);
   }
 }
