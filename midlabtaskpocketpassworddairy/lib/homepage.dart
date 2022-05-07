@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:midlabtaskpocketpassworddairy/chooseview.dart';
 import 'drawer.dart';
 import 'dart:async';
 import 'bgimage.dart';
 import 'strongpassword/strong.dart';
 import 'simplepassword/simple.dart';
-import 'displaypass.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 1),
+        Duration(seconds: 5),
             () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => LandingPage())));
   }
@@ -76,22 +76,66 @@ class _LandingPageState extends State<LandingPage> {
         ),
 
         drawer: MyDrawer(),
-        body: Stack(
-          fit: StackFit.expand,
+        body: Column(
           children: [
-            bgImage(),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SingleChildScrollView(
-                child: Card(
-                  child: Column(
-                    children: [
-                      Form(child: Row(
-                        children: [
+              padding: const EdgeInsets.all(10.0),
+              child: bgImage(),
+            ),
+            SingleChildScrollView(
+              child: Card(
+                child: Column(
+                  children: [
+                    Form(child: Row(
+                      children: [
 
-                          Expanded(
-                             child: Padding(
-                            padding: const EdgeInsets.all(10.0),
+                        Expanded(
+                           child: Padding(
+                          padding: const EdgeInsets.all(3.0),
+                          child: Container(
+                            height: 50,
+                            width: 150,
+                            child: FlatButton(
+                              color: Colors.purple,
+                              textColor: Colors.white,
+                              child: new Text(
+                                "Create Simple Password",
+                                style: TextStyle(fontSize: 25),
+                              ),
+                              onPressed: () {
+
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => simplepass(),));
+                              },
+
+
+                            ),
+                          ),
+                        ),
+                        ),
+
+                      ],
+                    ),
+
+                    ),
+
+
+                  ],
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              child: Card(
+                child: Column(
+                  children: [
+                    Form(child: Row(
+                      children: [
+
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
                             child: Container(
                               height: 50,
                               width: 150,
@@ -99,7 +143,7 @@ class _LandingPageState extends State<LandingPage> {
                                 color: Colors.purple,
                                 textColor: Colors.white,
                                 child: new Text(
-                                  "Simple Password",
+                                  "Create Strong Password",
                                   style: TextStyle(fontSize: 25),
                                 ),
                                 onPressed: () {
@@ -107,118 +151,65 @@ class _LandingPageState extends State<LandingPage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => simplepass(),));
+                                        builder: (context) => strongpass(),));
                                 },
 
 
                               ),
                             ),
                           ),
-                          ),
-
-                        ],
-                      ),
-
-                      ),
-
-
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(82.0),
-              child: SingleChildScrollView(
-                child: Card(
-                  child: Column(
-                    children: [
-                      Form(child: Row(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                height: 50,
-                                width: 150,
-                                child: FlatButton(
-                                  color: Colors.purple,
-                                  textColor: Colors.white,
-                                  child: new Text(
-                                    "View All",
-                                    style: TextStyle(fontSize: 25),
-                                  ),
-                                  onPressed: () {
-
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DisplayPasswords(),));
-                                  },
-
-
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-
-                      ),
-
-
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SingleChildScrollView(
-                  child: Card(
-                    child: Column(
-                      children: [
-                        Form(child: Row(
-                          children: [
-
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Container(
-                                  height: 50,
-                                  width: 150,
-                                  child: FlatButton(
-                                    color: Colors.purple,
-                                    textColor: Colors.white,
-                                    child: new Text(
-                                      "Strong Password",
-                                      style: TextStyle(fontSize: 25),
-                                    ),
-                                    onPressed: () {
-
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) => strongpass(),));
-                                    },
-
-
-                                  ),
-                                ),
-                              ),
-                            ),
-
-                          ],
                         ),
-
-                        ),
-
 
                       ],
                     ),
-                  ),
+
+                    ),
+
+
+                  ],
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              child: Card(
+                child: Column(
+                  children: [
+                    Form(child: Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Container(
+                              height: 50,
+                              width: 150,
+                              child: FlatButton(
+                                color: Colors.purple,
+                                textColor: Colors.white,
+                                child: new Text(
+                                  "View All Passwords",
+                                  style: TextStyle(fontSize: 25),
+                                ),
+                                onPressed: () {
+
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SelectData(),));
+                                },
+
+
+                              ),
+                            ),
+                          ),
+                        ),
+
+                      ],
+                    ),
+
+                    ),
+
+
+                  ],
                 ),
               ),
             ),

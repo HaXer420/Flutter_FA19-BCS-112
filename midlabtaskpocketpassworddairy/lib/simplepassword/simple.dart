@@ -16,9 +16,11 @@ class _simplepassState extends State<simplepass> {
   bool _isWithSpecial = false;
   double _numberCharPassword = 8;
   String newPassword = '';
+  String passwordHint = '';
   Color _color = Colors.blue;
   String isOk = '';
   TextEditingController _passwordLength = TextEditingController();
+  TextEditingController _passwordHint = TextEditingController();
   final password = RandomPasswordGenerator();
 
   final databaseRef = FirebaseDatabase.instance.ref();
@@ -76,18 +78,20 @@ class _simplepassState extends State<simplepass> {
                   height: 20,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Container(
-                    height: 70,
-                    width: 250,
-                    child: FlatButton(
-                      color: Colors.purple,
-                      textColor: Colors.white,
-                      child: new Text(
-                        "Password Hint: gf23er12",
-                        style: TextStyle(fontSize: 19, color: Colors.purple),
+                  padding: const EdgeInsets.all(5.0),
+                  child: TextField(
+                    controller: _passwordHint,
+                    decoration: InputDecoration(
+                      border: new OutlineInputBorder(
+                        borderRadius: new BorderRadius.circular(25.0),
+                        borderSide: new BorderSide(),
                       ),
-                ),
+                      filled: true,
+                      fillColor: Colors.grey[300],
+                      labelText: 'Enter Hint',
+                      labelStyle: TextStyle(color: Colors.purple),
+                    ),
+                    keyboardType: TextInputType.text,
                   ),
                 ),
 
@@ -99,6 +103,7 @@ class _simplepassState extends State<simplepass> {
                       if (_passwordLength.text.trim().isNotEmpty)
                         _numberCharPassword =
                             double.parse(_passwordLength.text.trim());
+                      passwordHint = _passwordHint.text.toString();
 
                       newPassword = password.randomPassword(
                           letters: _isWithLetters,
@@ -108,6 +113,7 @@ class _simplepassState extends State<simplepass> {
 
                           uppercase: _isWithUppercase);
 
+                      print(passwordHint);
                       print(newPassword);
                       // double passwordstrength =
                       //     password.checkPassword(password: newPassword);
@@ -166,7 +172,7 @@ class _simplepassState extends State<simplepass> {
                 Center(
                   child: OutlinedButton(
                       onPressed: () {
-                        insertData(newPassword);
+                        insertData(newPassword,passwordHint);
                       },
                       child: Text(
                         "Store on Cloud",
@@ -180,8 +186,9 @@ class _simplepassState extends State<simplepass> {
     );
   }
 
-  void insertData(String password) {
+  void insertData(String password, String hint) {
     databaseRef.child("Simple Passwords").push().set({
+      'Hint': hint,
       'Password': password,
     });
   }

@@ -104,24 +104,26 @@ class _strongpassState extends State<strongpass> {
             ),
             Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Container(
-                height: 22,
-                width: 350,
-                child: FlatButton(
-                  color: Colors.purple,
-                  textColor: Colors.white,
-                  child: new Text(
-                    "Password Hint: z5Xh]%&#F=",
-                    style: TextStyle(fontSize: 19, color: Colors.purple),
+              child: TextField(
+                controller: _passwordHint,
+                decoration: InputDecoration(
+                  border: new OutlineInputBorder(
+                    borderRadius: new BorderRadius.circular(25.0),
+                    borderSide: new BorderSide(),
                   ),
+                  filled: true,
+                  fillColor: Colors.grey[300],
+                  labelText: 'Enter Hint',
+                  labelStyle: TextStyle(color: Colors.purple),
                 ),
+                keyboardType: TextInputType.text,
               ),
             ),
             SizedBox(
               height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(5.0),
               child: TextField(
                 controller: _passwordLength,
                 decoration: InputDecoration(
@@ -145,6 +147,7 @@ class _strongpassState extends State<strongpass> {
                   if (_passwordLength.text.trim().isNotEmpty)
                     _numberCharPassword =
                         double.parse(_passwordLength.text.trim());
+                  passwordHint = _passwordHint.text.toString();
 
                   newPassword = password.randomPassword(
                       letters: _isWithLetters,
@@ -154,6 +157,7 @@ class _strongpassState extends State<strongpass> {
 
                       uppercase: _isWithUppercase);
 
+                  print(passwordHint);
                   print(newPassword);
                   // double passwordstrength =
                   //     password.checkPassword(password: newPassword);
@@ -210,7 +214,7 @@ class _strongpassState extends State<strongpass> {
             Center(
               child: OutlinedButton(
                   onPressed: () {
-                    insertData(newPassword);
+                    insertData(newPassword,passwordHint);
                   },
                   child: Text(
                     "Store on Cloud",
@@ -224,8 +228,9 @@ class _strongpassState extends State<strongpass> {
     );
   }
 
-  void insertData(String password) {
+  void insertData(String password, String hint) {
     databaseRef.child("Strong Passwords").push().set({
+      'Hint': hint,
       'Password': password,
     });
   }
