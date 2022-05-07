@@ -16,12 +16,16 @@ class _simplepassState extends State<simplepass> {
   bool _isWithSpecial = false;
   double _numberCharPassword = 8;
   String newPassword = '';
-  String passwordHint = '';
   Color _color = Colors.blue;
   String isOk = '';
-  TextEditingController _passwordHint = TextEditingController();
   TextEditingController _passwordLength = TextEditingController();
   final password = RandomPasswordGenerator();
+
+  final databaseRef = FirebaseDatabase.instance.ref();
+
+
+
+
   @override
   void initState() {
     super.initState();
@@ -72,20 +76,18 @@ class _simplepassState extends State<simplepass> {
                   height: 20,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: TextField(
-                    controller: _passwordHint,
-                    decoration: InputDecoration(
-                      border: new OutlineInputBorder(
-                        borderRadius: new BorderRadius.circular(25.0),
-                        borderSide: new BorderSide(),
+                  padding: const EdgeInsets.all(10.0),
+                  child: Container(
+                    height: 70,
+                    width: 250,
+                    child: FlatButton(
+                      color: Colors.purple,
+                      textColor: Colors.white,
+                      child: new Text(
+                        "Password Hint: gf23er12",
+                        style: TextStyle(fontSize: 19, color: Colors.purple),
                       ),
-                      filled: true,
-                      fillColor: Colors.grey[300],
-                      labelText: 'Enter Hint',
-                      labelStyle: TextStyle(color: Colors.purple),
-                    ),
-                    keyboardType: TextInputType.text,
+                ),
                   ),
                 ),
 
@@ -119,8 +121,8 @@ class _simplepassState extends State<simplepass> {
                       //   _color = Colors.green;
                       //   isOk = 'This passsword is Strong';
                       // }
-                      DatabaseReference test = FirebaseDatabase.instance.ref().child("TestingAPP");
-                      test.set("I'm testing with ID ${newPassword}");
+                      // DatabaseReference test = FirebaseDatabase.instance.ref().child("TestingAPP");
+                      // test.set("I'm testing with ID ${newPassword}");
 
                       setState(() {});
                     },
@@ -159,10 +161,29 @@ class _simplepassState extends State<simplepass> {
                             style: TextStyle(color: _color, fontSize: 25),
                           ),
                         ),
-                      ))
+                      ),
+                  ),
+                Center(
+                  child: OutlinedButton(
+                      onPressed: () {
+                        insertData(newPassword);
+                      },
+                      child: Text(
+                        "Store Password on Cloud",
+                        style: TextStyle(fontSize: 20, color: Colors.purple),
+                      )
+                  ),
+                )
               ],
             )),
       ),
     );
   }
+
+  void insertData(String password) {
+    databaseRef.child("path").push().set({
+      'Password': password,
+    });
+  }
+
 }

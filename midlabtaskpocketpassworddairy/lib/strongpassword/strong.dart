@@ -66,7 +66,7 @@ class _strongpassState extends State<strongpass> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                checkBox('Upper Case Character', (bool value) {
+                checkBox('Upper Case', (bool value) {
                   _isWithUppercase = value;
                   setState(() {});
                 }, _isWithUppercase),
@@ -93,23 +93,25 @@ class _strongpassState extends State<strongpass> {
               ],
             ),
             SizedBox(
-              height: 20,
+              height: 20.0,
+              width: 250.0,
+              child: Divider(
+                color: Colors.purple,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: TextField(
-                controller: _passwordHint,
-                decoration: InputDecoration(
-                  border: new OutlineInputBorder(
-                    borderRadius: new BorderRadius.circular(25.0),
-                    borderSide: new BorderSide(),
+              padding: const EdgeInsets.all(5.0),
+              child: Container(
+                height: 22,
+                width: 350,
+                child: FlatButton(
+                  color: Colors.purple,
+                  textColor: Colors.white,
+                  child: new Text(
+                    "Password Hint: z5Xh]%&#F=",
+                    style: TextStyle(fontSize: 19, color: Colors.purple),
                   ),
-                  filled: true,
-                  fillColor: Colors.grey[300],
-                  labelText: 'Enter Hint',
-                  labelStyle: TextStyle(color: Colors.purple),
                 ),
-                keyboardType: TextInputType.number,
               ),
             ),
             SizedBox(
