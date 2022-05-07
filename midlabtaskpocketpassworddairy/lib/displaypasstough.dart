@@ -38,7 +38,8 @@ class _DisplayPasswordsStrongState extends State<DisplayPasswordsStrong> {
           var x = snapshot.value;
           print (x);
           return ListTile(
-            subtitle: Text(snapshot.value.toString(),),
+            subtitle: Text(snapshot.child("Hint").value.toString()),
+            title : Text(snapshot.child("Password").value.toString()),
             trailing: IconButton(
               onPressed: (){
                 var keyFinder = snapshot.key;

@@ -3,7 +3,7 @@ import 'package:midlabtaskpocketpassworddairy/homepage.dart';
 import 'dart:async';
 import 'displaypasssimple.dart';
 import 'displaypasstough.dart';
-import 'UpdatePasswords.dart';
+import 'UpdateSimplePasswords.dart';
 
 
 class SelectData extends StatefulWidget {
@@ -93,7 +93,7 @@ class _SelectionPageState extends State<SelectionPage> {
                                   color: Colors.purple,
                                   textColor: Colors.white,
                                   child: new Text(
-                                    "View Simple Passwords",
+                                    "Only View Passwords",
                                     style: TextStyle(fontSize: 25),
                                   ),
                                   onPressed: () {
@@ -120,6 +120,50 @@ class _SelectionPageState extends State<SelectionPage> {
                   ),
                 ),
               ),
+              // SingleChildScrollView(
+              //   child: Card(
+              //     child: Column(
+              //       children: [
+              //         Form(child: Row(
+              //           children: [
+              //
+              //             Expanded(
+              //               child: Padding(
+              //                 padding: const EdgeInsets.all(10.0),
+              //                 child: Container(
+              //                   height: 50,
+              //                   width: 150,
+              //                   child: FlatButton(
+              //                     color: Colors.purple,
+              //                     textColor: Colors.white,
+              //                     child: new Text(
+              //                       "View Strong Password",
+              //                       style: TextStyle(fontSize: 25),
+              //                     ),
+              //                     onPressed: () {
+              //
+              //                       Navigator.push(
+              //                           context,
+              //                           MaterialPageRoute(
+              //                             builder: (context) => DisplayPasswordsStrong(),));
+              //                     },
+              //
+              //
+              //                   ),
+              //                 ),
+              //               ),
+              //             ),
+              //
+              //           ],
+              //         ),
+              //
+              //         ),
+              //
+              //
+              //       ],
+              //     ),
+              //   ),
+              // ),
               SingleChildScrollView(
                 child: Card(
                   child: Column(
@@ -137,51 +181,7 @@ class _SelectionPageState extends State<SelectionPage> {
                                   color: Colors.purple,
                                   textColor: Colors.white,
                                   child: new Text(
-                                    "View Strong Password",
-                                    style: TextStyle(fontSize: 25),
-                                  ),
-                                  onPressed: () {
-
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => DisplayPasswordsStrong(),));
-                                  },
-
-
-                                ),
-                              ),
-                            ),
-                          ),
-
-                        ],
-                      ),
-
-                      ),
-
-
-                    ],
-                  ),
-                ),
-              ),
-              SingleChildScrollView(
-                child: Card(
-                  child: Column(
-                    children: [
-                      Form(child: Row(
-                        children: [
-
-                          Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Container(
-                                height: 50,
-                                width: 150,
-                                child: FlatButton(
-                                  color: Colors.purple,
-                                  textColor: Colors.white,
-                                  child: new Text(
-                                    "Edit Passwords",
+                                    "View/Edit Passwords",
                                     style: TextStyle(fontSize: 25),
                                   ),
                                   onPressed: () {

@@ -229,7 +229,7 @@ class _strongpassState extends State<strongpass> {
   }
 
   void insertData(String password, String hint) {
-    databaseRef.child("Strong Passwords").push().set({
+    databaseRef.child("Passwords").push().set({
       'Hint': hint,
       'Password': password,
     });

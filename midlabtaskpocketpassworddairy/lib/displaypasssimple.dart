@@ -13,14 +13,14 @@ class DisplayPasswordsSimple extends StatefulWidget {
 
 class _DisplayPasswordsSimpleState extends State<DisplayPasswordsSimple> {
 
-  final databaseRef1 = FirebaseDatabase.instance.ref().child("Simple Passwords");
+  final databaseRef1 = FirebaseDatabase.instance.ref().child("Passwords");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.amber,
       appBar: AppBar(
-        title: const Text('Simple Passwords'),
+        title: const Text('Passwords'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -40,7 +40,8 @@ class _DisplayPasswordsSimpleState extends State<DisplayPasswordsSimple> {
           var x = snapshot.value;
           print (x);
           return ListTile(
-            subtitle: Text(snapshot.value.toString()),
+            subtitle: Text(snapshot.child("Hint").value.toString()),
+            title : Text(snapshot.child("Password").value.toString()),
             trailing: IconButton(
               onPressed: (){
                 var keyFinder = snapshot.key;
