@@ -169,7 +169,7 @@ class _simplepassState extends State<simplepass> {
                         insertData(newPassword);
                       },
                       child: Text(
-                        "Store Password on Cloud",
+                        "Store on Cloud",
                         style: TextStyle(fontSize: 20, color: Colors.purple),
                       )
                   ),

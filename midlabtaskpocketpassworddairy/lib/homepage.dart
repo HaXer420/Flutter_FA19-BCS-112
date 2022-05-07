@@ -4,6 +4,7 @@ import 'dart:async';
 import 'bgimage.dart';
 import 'strongpassword/strong.dart';
 import 'simplepassword/simple.dart';
+import 'displaypass.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -149,10 +150,10 @@ class _LandingPageState extends State<LandingPage> {
                                   ),
                                   onPressed: () {
 
-                                    // Navigator.push(
-                                    //     context,
-                                    //     MaterialPageRoute(
-                                    //       builder: (context) => contactus(),));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => DisplayPasswords(),));
                                   },
 
 
