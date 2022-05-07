@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'strong_password_generator.dart';
 import 'package:midlabtaskpocketpassworddairy/homepage.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class strongpass extends StatefulWidget {
   @override
@@ -20,6 +21,8 @@ class _strongpassState extends State<strongpass> {
   TextEditingController _passwordHint = TextEditingController();
   TextEditingController _passwordLength = TextEditingController();
   final password = RandomPasswordGenerator();
+
+  final databaseRef = FirebaseDatabase.instance.ref();
   @override
   void initState() {
     super.initState();
@@ -202,10 +205,28 @@ class _strongpassState extends State<strongpass> {
                     style: TextStyle(color: _color, fontSize: 25),
                   ),
                 ),
-              ))
+              ),
+              ),
+            Center(
+              child: OutlinedButton(
+                  onPressed: () {
+                    insertData(newPassword);
+                  },
+                  child: Text(
+                    "Store Password on Cloud",
+                    style: TextStyle(fontSize: 20, color: Colors.purple),
+                  )
+              ),
+            )
           ],
         )),
       ),
     );
+  }
+
+  void insertData(String password) {
+    databaseRef.child("Strong Passwords").push().set({
+      'Password': password,
+    });
   }
 }

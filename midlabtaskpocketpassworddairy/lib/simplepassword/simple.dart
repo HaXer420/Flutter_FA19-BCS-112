@@ -181,7 +181,7 @@ class _simplepassState extends State<simplepass> {
   }
 
   void insertData(String password) {
-    databaseRef.child("path").push().set({
+    databaseRef.child("Simple Passwords").push().set({
       'Password': password,
     });
   }
